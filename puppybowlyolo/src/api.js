@@ -17,7 +17,7 @@ try {
      console.error(error);
   }
  }
- export function createPlayer(player) { //this helps our app get the right info. Creates a player. 
+ export function createPlayer(player) { //This helps our app get the right info. Creates a player. 
    try {
       const response = await fetch (`${API_URL}/players`, {
       method: "POST", 

@@ -1,4 +1,4 @@
-export default function Player({ player onClick}){
+export default function Player({ player, onClick}){
     return (
 <tr key={puppy.id}>
 <td>{puppy.name}</td>

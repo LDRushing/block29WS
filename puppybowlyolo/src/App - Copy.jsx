@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { getPlayers, getPlayer, deletePlayer, createPlayer } from './api.js';
+import { getPlayers, getPlayer, deletePlayer } from './api.js';
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0);
   const [player, setPlayer] = useState(0);
   const [filter, setFilter] = useState(0);
-  const [players, setPlayers] = useState(""); //I can always map over an empty array. Null won't work.
   useEffect(() => {
     async function puppy() {
       const newPlayer = await createPlayer({
@@ -19,9 +18,9 @@ function App() {
     //})
     //getPlayers().then((players) => console.log(players));
     async function getAllPlayers(){
-      const puppies = await getPlayers();
-      console.log(puppies);
-    setPlayers(puppies);}//Sets the player's value in the state to equal 'players'. 
+      const players = await getPlayers();
+      console.log(players);
+    }
     getAllPlayers();
   }
 , []); //We want our useEffect to end here. 
@@ -31,22 +30,30 @@ function App() {
     name: "Fuzzy",
     breed: "Mastiff",
     status: "Field",
-}]; //Box brackets are arrays and curly braces are objects.
+}]; //Box brackets are arrays and curly braces are objects. 
+function App() {
+  const [players, setPlayers] = useState(""); //I can always map over an empty array. Null won't work.
+  const [player, setPlayer] = useState("");
+  useEffect(() => {
+getPlayers().then((players) => {
+  setPlayers(players);
+});
+}, []);
+
   function handlePlayerClick(playerId) {
-//getPlayer(playerid).then(setPlayer);
-  console.log(playerId);
+getPlayer(playerid).then(setPlayer);
   }
 
 function handlePlayerDelete(playerId) {
-  deletePlayer(playerId).then(() => {
+  deletePlayers(playerId).then(() => {
     getPlayers().then((players) => {
     setPlayers(players);
   });
   });
 }
 function handleSubmit(evt) {
-  evt.preventDefault();
-  const formData = new formData(evt.target);
+  evt.preventDefault();''
+  const formData = new FormDate(evt.target);
   const newPlayer = object.fromEntries(formData.entries());
   createPlayer(newPlayer).then(() => {
     getPlayers().then((players) => {
@@ -54,7 +61,7 @@ function handleSubmit(evt) {
     });
   });
 }
-function handleFilter(evt) {
+function handleFilter(evt) => {
   setFilter(evt.target.value); 
 }
   return (
@@ -68,7 +75,7 @@ function handleFilter(evt) {
       <input type="text" id="breed" />
       <label htmlFor="status">Status:</label>
       <input type="status" id="status" />
-      <button type="submit">Add Player</button>
+        <button type="submit">Add Player</button>
     </form>
     <table>
       <thead> 
@@ -80,19 +87,26 @@ function handleFilter(evt) {
         </tr>
       </thead>
       <tbody>
-        {players.filter((player) => player.name.toLowerCase().include(filter.toLowerCase()))
-        .map((puppy) => (
-        <tr key={puppy.id}>
+        {players.filter((players) => player.name.toLowerCase().include(filter.toLowerCase()))
+        .map((player) => (
+        <tr key={puppyid}>
           <td>{puppy.name}</td>
           <td>{puppy.breed}</td>
           <td>{puppy.status}</td>
           <td>
-  <button onClick={() => handlePlayerClick(player.id)}>View Player</button>
-  <button onClick={() => handlePlayerDelete(player.id)}>Delete Player</button>
+  <button onCLick={() => onClick(player.id)}>View Player</button>
+  <button onClick={() => onDelete(player.id)}>Delete Player</button>
         </td>
         </tr>
         ))};
-    </tbody>
+<tbody>
+{players.filter((player) => player.toLowerCase().name.includes(filter.toCallLowerCase))
+}
+  key={player.id}
+  player={player}
+  onClick={handlePlayerClick}
+  onDelete=(deletePlayer)
+      </tbody>
     </table>
     <dialog open>{player.name}</dialog>
     </div>
