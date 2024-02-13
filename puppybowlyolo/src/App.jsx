@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { createPlayer } from './api.js';
+import { getPlayers } from './api.js';
 import './App.css'
 
 function App() {
@@ -11,8 +9,8 @@ function App() {
       const newPlayer = await createPlayer({
         name: 'Rufus',
         breed: 'Irish setter'
-      });
-    }
+      })};
+    })
     fetch().then(response => response.jscon()).then (result => {
       console.log(result);
     })
@@ -23,31 +21,53 @@ function App() {
     }
     getAllPlayers();
   }, []);
+  const fakePuppies = [
+    id: 1,
+    name: "Fuzzy",
+    breed: "Mastiff",
+    status: "Field",
+  ]
+function App() {
+  const [players, setPlayers] = useState([]); //I can always map over an empty array. Null won't work.
+  const [player, setPlayer] = useState({});
+  useEffect(() => {
+getPlayers().then((players) => {
+  setPlayers(players);
+});
+}, []);
 
+  function handlePlayerClick(playerId) {
+getPlayer
+  }
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <h1>Puppy Bowl</h1>
+    <table>
+      <thead> 
+        <tr>
+          <th>Name</th>
+          <th>Breed</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {players.map((players) => {
+       return (
+        <tr key={puppyid}>
+          <td>{puppy.name}</td>
+          <td>{puppy.breed}</td>
+          <td>{puppy.status}</td>
+          <td>
+  <button onCLick={handlePlayerClick{puppy.id}}>View Player</button>
+        </td>
+        </tr>
+       );
+})};
+      </tbody>
+    </table>
+    <dialog open>{player.name}</dialog>
     </>
-  )
+  );
 }
-
 export default App

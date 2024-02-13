@@ -11,7 +11,7 @@ export function getPlayers(){
 }
 export function getPlayer(playerId) { //this helps our app get the right info, and gets a player ID 
 try {
-   const response = await fetch (`${API_URL}/players/${players}`);
+   const response = await fetch (`${API_URL}/players/${player}`);
    const result = await response.json();
    return result.data.player;
   }
