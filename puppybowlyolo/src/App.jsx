@@ -62,7 +62,7 @@ function handleFilter(evt) {
   return (
     <div>
     <h1>Puppy Bowl</h1>
-    <PlayerDetails player={player} />
+    <PlayerDetail player={player} />
     <form onSubmit={handleSubmit}>
       <label htmlFor="name">Name:</label>
       <input type="text" id="name"/>

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 export default function Player({ Player }){
     return (
 <tr key={puppy.id}>
