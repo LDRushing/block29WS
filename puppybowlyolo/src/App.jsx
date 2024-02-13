@@ -4,6 +4,8 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0);
+  const [player, setPlayer] = useState(0);
+  const [filter, setFilter] = useState(0);
   useEffect(() => {
     async function puppy() {
       const newPlayer = await createPlayer({
@@ -28,8 +30,8 @@ function App() {
     status: "Field",
   ]
 function App() {
-  const [players, setPlayers] = useState([]); //I can always map over an empty array. Null won't work.
-  const [player, setPlayer] = useState({});
+  const [players, setPlayers] = useState(""); //I can always map over an empty array. Null won't work.
+  const [player, setPlayer] = useState("");
   useEffect(() => {
 getPlayers().then((players) => {
   setPlayers(players);
@@ -41,27 +43,34 @@ getPlayer(playerid).then(setPlayer);
 function handlePlayerDelete(playerId) {
   deletePlayers(playerId).then(() => {
     getPlayers().then((players);
-    setPlauers(players);
+    setPlayers(players);
     )
   }
   )
 }
 function handleSubmit(evt) {
   evt.preventDefault();''
-  const formData. = new FormDate(evt.target);
-  console.log(formData).then(() => {
-    setPlayers(players);
+  const formData = new FormDate(evt.target);
+  const newPlayer = object.fromEntries(formData.entries());
+  createPlayer(newPlayer).then(() => {
+    getPlayers().then((players) => {
+      setPlayers(players);
+    });
   });
-});
 }
-  }
+function handleFilter(evt) => {
+  setFilter(evt.target.value); 
+}
   return (
-    <div onClick={{() => setPlayer()}}>
+    <div onClick={{() => setPlayer{()}}>
     <h1>Puppy Bowl</h1>
     <PlayerDetails player={player} />
     <form onSubmit={handleSubmit}>
       <label htmlFor="name"></label>
-      <input type="text" id="name"/>Name:<
+      <input type="text" id="name"/>
+      <label htmlFor="breed">Breed:</label>
+      <input type="text" id="breed" /> 
+        <button type="submit">Add Player</button>
     </form>
     <table>
       <thead> 
@@ -87,6 +96,8 @@ function handleSubmit(evt) {
        );
 })};
 <tbody>
+{players.filter((player) => player.toLowerCase().name.includes(filter.toCallLowerCase))
+}
   key={player.id}
   player={player}
   onClick={handlePlayerClick}
