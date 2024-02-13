@@ -4,8 +4,7 @@ export function getPlayers(){
   const response = await fetch (`${API_URL}/players`);
   const result = await response.json();
   return result.data.players;
- }
- catch (error){
+ } catch (error){
     console.error(error);
  }
 }
@@ -14,8 +13,7 @@ try {
    const response = await fetch (`${API_URL}/players/${player}`);
    const result = await response.json();
    return result.data.player;
-  }
-  catch (error){
+  } catch (error){
      console.error(error);
   }
  }
@@ -30,20 +28,18 @@ try {
    });
       const result = await response.json();
       return result.data.newPlayer;
-     }
-     catch (error){
+     }  catch (error){
         console.error(error);
      }
     }
-    export async function deletePlayers(){
+    export async function deletePlayers(playerId){
       try {
-       const response = await fetch (`${API_URL}/players`${playerId});
+       const response = await fetch (`${API_URL}/players`${playerId}, {
        method: "DELETE",
       });
        const result = await response.json();
        return result.data.players;
-      }
-      catch (error){
+      } catch (error){
          console.error(error);
       }
    }

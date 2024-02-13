@@ -1,11 +1,11 @@
-export default function Player(){
+export default function Player({ player onClick}){
     return (
-<tr key={puppyid}>
+<tr key={puppy.id}>
 <td>{puppy.name}</td>
 <td>{puppy.breed}</td>
 <td>{puppy.status}</td>
 <td>
-<button onCLick={() => onClick(player.id)>View Player</button>
+  <button onCLick={() => onClick(puppy.id)}>View Player</button>
 </td>
 </tr>
 );

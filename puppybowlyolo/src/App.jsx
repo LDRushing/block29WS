@@ -62,7 +62,7 @@ function handleFilter(evt) => {
   setFilter(evt.target.value); 
 }
   return (
-    <div onClick={{() => setPlayer{()}}>
+    <div onClick={() => setPlayer()}>
     <h1>Puppy Bowl</h1>
     <PlayerDetails player={player} />
     <form onSubmit={handleSubmit}>
@@ -82,19 +82,18 @@ function handleFilter(evt) => {
         </tr>
       </thead>
       <tbody>
-        {players.map((players) => {
-       return (
+        {players.filter((players) => player.name.toLowerCase().include(filter.toLowerCase()))
+        .map((player) => (
         <tr key={puppyid}>
           <td>{puppy.name}</td>
           <td>{puppy.breed}</td>
           <td>{puppy.status}</td>
           <td>
   <button onCLick={() => onClick(player.id)}>View Player</button>
-  <button onClick={() => onDelete(player.id)}
+  <button onClick={() => onDelete(player.id)}>Delete Player</button>
         </td>
         </tr>
-       );
-})};
+        ))}
 <tbody>
 {players.filter((player) => player.toLowerCase().name.includes(filter.toCallLowerCase))
 }
@@ -108,4 +107,4 @@ function handleFilter(evt) => {
     </div>
   );
 }
-export default App
+export default App;
