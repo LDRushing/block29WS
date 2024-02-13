@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getPlayers } from './api.js';
+import { getPlayers, getPlayer, deletePlater } from './api.js';
 import './App.css'
 
 function App() {
@@ -37,11 +37,32 @@ getPlayers().then((players) => {
 }, []);
 
   function handlePlayerClick(playerId) {
-getPlayer
+getPlayer(playerid).then(setPlayer);
+function handlePlayerDelete(playerId) {
+  deletePlayers(playerId).then(() => {
+    getPlayers().then((players);
+    setPlauers(players);
+    )
+  }
+  )
+}
+function handleSubmit(evt) {
+  evt.preventDefault();''
+  const formData. = new FormDate(evt.target);
+  console.log(formData).then(() => {
+    setPlayers(players);
+  });
+});
+}
   }
   return (
-    <>
+    <div onClick={{() => setPlayer()}}>
     <h1>Puppy Bowl</h1>
+    <PlayerDetails player={player} />
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="name"></label>
+      <input type="text" id="name"/>Name:<
+    </form>
     <table>
       <thead> 
         <tr>
@@ -59,15 +80,21 @@ getPlayer
           <td>{puppy.breed}</td>
           <td>{puppy.status}</td>
           <td>
-  <button onCLick={handlePlayerClick{puppy.id}}>View Player</button>
+  <button onCLick={() => onClick(player.id)}>View Player</button>
+  <button onClick={() => onDelete(player.id)}
         </td>
         </tr>
        );
 })};
+<tbody>
+  key={player.id}
+  player={player}
+  onClick={handlePlayerClick}
+  onDelete=(deletePlayer)
       </tbody>
     </table>
     <dialog open>{player.name}</dialog>
-    </>
+    </div>
   );
 }
 export default App
