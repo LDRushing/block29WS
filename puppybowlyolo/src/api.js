@@ -1,5 +1,5 @@
-const API_URL = "https://fsa-puppy-bowl.herokuapp.com/api/2308-ACC-ET-WEB-PT/players"
-export function getPlayers(){
+const API_URL = "https://fsa-puppy-bowl.herokuapp.com/api/2308-ACC-ET-WEB-PT"
+export async function getPlayers(){
  try {
   const response = await fetch (`${API_URL}/players`);
   const result = await response.json();
@@ -8,16 +8,16 @@ export function getPlayers(){
     console.error(error);
  }
 }
-export function getPlayer(playerId) { //this helps our app get the right info, and gets a player ID 
+export async function getPlayer(playerId) { //this helps our app get the right info, and gets a player ID 
 try {
-   const response = await fetch (`${API_URL}/players/${player}`);
+   const response = await fetch (`${API_URL}/players/${playerId}`);
    const result = await response.json();
    return result.data.player;
   } catch (error){
      console.error(error);
   }
  }
- export function createPlayer(player) { //This helps our app get the right info. Creates a player. 
+ export async function createPlayer(player) { //This helps our app get the right info. Creates a player. 
    try {
       const response = await fetch (`${API_URL}/players`, {
       method: "POST", 
@@ -32,9 +32,9 @@ try {
         console.error(error);
      }
     }
-    export async function deletePlayers(playerId){
+    export async function deletePlayer(playerId){
       try {
-       const response = await fetch (`${API_URL}/players`${playerId}, {
+       const response = await fetch (`${API_URL}/players/${playerId}`, {
        method: "DELETE",
       });
        const result = await response.json();

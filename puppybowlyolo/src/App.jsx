@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { getPlayers, getPlayer, deletePlayer, createPlayer } from './api.js';
+import { PlayerDetail } from './components/PlayerDetail.jsx' 
+import { Player } from './components/Player.jsx'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0);
   const [player, setPlayer] = useState(0);
   const [filter, setFilter] = useState(0);
-  const [players, setPlayers] = useState(""); //I can always map over an empty array. Null won't work.
+  const [players, setPlayers] = useState([]); //I can always map over an empty array. Null won't work.
   useEffect(() => {
     async function puppy() {
       const newPlayer = await createPlayer({
@@ -47,7 +48,7 @@ function handlePlayerDelete(playerId) {
 function handleSubmit(evt) {
   evt.preventDefault();
   const formData = new formData(evt.target);
-  const newPlayer = object.fromEntries(formData.entries());
+  const newPlayer = Object.fromEntries(formData.entries());
   createPlayer(newPlayer).then(() => {
     getPlayers().then((players) => {
       setPlayers(players);
@@ -55,10 +56,11 @@ function handleSubmit(evt) {
   });
 }
 function handleFilter(evt) {
+ // {players.filter((player) => player.name.toLowerCase().include(filter.toLowerCase()))
   setFilter(evt.target.value); 
 }
   return (
-    <div onClick={() => setPlayer()}>
+    <div>
     <h1>Puppy Bowl</h1>
     <PlayerDetails player={player} />
     <form onSubmit={handleSubmit}>
@@ -80,8 +82,7 @@ function handleFilter(evt) {
         </tr>
       </thead>
       <tbody>
-        {players.filter((player) => player.name.toLowerCase().include(filter.toLowerCase()))
-        .map((puppy) => (
+        {players.map((puppy) => (
         <tr key={puppy.id}>
           <td>{puppy.name}</td>
           <td>{puppy.breed}</td>
