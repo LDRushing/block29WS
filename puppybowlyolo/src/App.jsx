@@ -1,10 +1,28 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { createPlayer } from './api.js';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    async function puppy() {
+      const newPlayer = await createPlayer({
+        name: 'Rufus',
+        breed: 'Irish setter'
+      });
+    }
+    fetch().then(response => response.jscon()).then (result => {
+      console.log(result);
+    })
+    getPlayers().then((players) => console.log(players));
+    async function getAllPlayers(){
+      const players = await getPlayers();
+      console.log(players);
+    }
+    getAllPlayers();
+  }, []);
 
   return (
     <>
