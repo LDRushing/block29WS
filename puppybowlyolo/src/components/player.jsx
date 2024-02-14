@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react'
-export default function Player({ Player }){
+import { Routes, Route, Link } from "react-router-dom";
+export default function Player({ Player, onClick, handlePlayerDelete }){
+  <div class="singleplayer">
     return (
-<tr key={puppy.id}>
-<td>{puppy.name}</td>
-<td>{puppy.breed}</td>
-<td>{puppy.status}</td>
+<tr key={player.id}>
+<td>{player.name}</td>
+<td>{player.breed}</td>
+<td>{player.status}</td>
 <td>
-  <button onClick={() => onClick(puppy.id)}>View Player</button>
+  <button onClick={() => onClick(player.id)}>View Player</button>
   <button onClick={() => handlePlayerDelete(player.id)}>Delete Player</button>
 </td>
 </tr>
-);
+    );
+</div>
 }

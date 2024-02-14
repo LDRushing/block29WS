@@ -10,6 +10,7 @@ export async function getPlayers(){
 }
 export async function getPlayer(playerId) { //this helps our app get the right info, and gets a player ID 
 try {
+   console.log(`${API_URL}/players/${playerId}`)
    const response = await fetch (`${API_URL}/players/${playerId}`);
    const result = await response.json();
    return result.data.player;
