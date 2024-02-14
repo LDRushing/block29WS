@@ -13,8 +13,26 @@ function PlayerDetail() {
 }).catch((error) => {
     console.error("Error fetching player:", error);
 });
-}, [puppyid]); // Fetch player whenever puppyid changes
-   ;//Get player uses a puppy id to get info tied to that ID. 
+}, [puppyid]); // Fetch player whenever puppyid changes. Get player uses a puppy id to get info tied to that ID. 
+const handlePlayerDelete = () => {
+    handlePlayerDelete(puppyid).then((playerData) => {
+        onDelete(puppyid); // Notify parent component of deletion
+        history.push("/"); // Redirect to home page after deletion
+    }).catch((error) => {
+        console.error("Error deleting player:", error);
+    });
+};
+const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+    updatePlayer(puppyid, formData)
+    .then(() => {
+        // Optionally, you can update the player state here if needed
+        history.push(`/player/${puppyid}`); // Redirect to player details page after update
+    })
+    .catch((error) => {
+        console.error("Error updating player:", error);
+    });
+};
   return (
     <div classname="details">
       {player ? (

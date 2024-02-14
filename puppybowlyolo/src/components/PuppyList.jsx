@@ -41,7 +41,7 @@ function PuppyList() {
 function handlePlayerDelete(playerId) {
   deletePlayer(playerId).then(() => {
     getPlayers().then((players) => {
-    setPlayers(players);
+   setPlayers(players);
   });
   });
 }
