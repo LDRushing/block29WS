@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from "react-router-dom";
-export default function Player({ Player, onClick, handlePlayerDelete }){
+export default function Player({ Player, onClick, handlePlayerDelet, handleFilter }){
   <div class="singleplayer">
     return (
 <tr key={player.id}>
