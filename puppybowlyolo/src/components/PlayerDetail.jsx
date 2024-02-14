@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getPlayer } from '../api.js'
+import { deletePlayer, getPlayer } from '../api.js'
 import { Routes, Route, useParams, Link } from 'react-router-dom';
 import PuppyList from './PuppyList.jsx';
 //Props are how we pass data from one component to another. 
@@ -15,24 +15,37 @@ function PlayerDetail() {
 });
 }, [puppyid]); // Fetch player whenever puppyid changes. Get player uses a puppy id to get info tied to that ID. 
 const handlePlayerDelete = () => {
-    handlePlayerDelete(puppyid).then((playerData) => {
-        onDelete(puppyid); // Notify parent component of deletion
-        history.push("/"); // Redirect to home page after deletion
+    let {puppyid} = useParams();
+    console.log(handlePlayerDelete);
+    useEffect (() => {
+        deletePlayer(puppyid).then((playerData) => {
+            setPlayer(playerData);
     }).catch((error) => {
-        console.error("Error deleting player:", error);
+        console.error("Error deleting player:", error)
     });
+    } [puppy.id]);
+  //  handlePlayerDelete(puppyid).then((playerData) => {
+   //     onDelete(puppyid); // Notify parent component of deletion
+   //     history.push("/"); // Redirect to home page after deletion
+   // }).catch((error) => {
+   //     console.error("Error deleting player:", error);
+   // });
 };
-const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
-    updatePlayer(puppyid, formData)
-    .then(() => {
-        // Optionally, you can update the player state here if needed
-        history.push(`/player/${puppyid}`); // Redirect to player details page after update
-    })
-    .catch((error) => {
-        console.error("Error updating player:", error);
-    });
-};
+const handleSubmit = (event) => //{
+  let {puppyid} = useParams();
+  console.log(handleSubmit);
+  useEffect (() => {
+      addPlayer(puppyid).then((playerData) => {
+          setPlayer(playerData);
+  }).catch((error) => {
+      console.error("Error submitting player:", error)
+  });
+  } [puppy.id]);
+const handleFilter(evt) {
+    filterPlayer((playerDate);
+}).catch((error) => {
+    console.error("Error filtering playes:"), error)
+)};
   return (
     <div classname="details">
       {player ? (
