@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { deletePlayer, getPlayer } from '../api.js'
+import { deletePlayer, getPlayer, createPlayer } from '../api.js'
 import { Routes, Route, useParams, Link } from 'react-router-dom';
+import { PlayerInfo } from './PlayerInfo.jsx'
 import PuppyList from './PuppyList.jsx';
 //Props are how we pass data from one component to another. 
 function PlayerDetail() {
     const [player, setPlayer] = useState(0);
     let {puppyid} = useParams();
     console.log(puppyid);
-    useEffect (() => {
+    useEffect (() => { 
    getPlayer(puppyid).then((playerData) => {
     setPlayer(playerData); // Update player state with fetched player data
 }).catch((error) => {
@@ -16,7 +17,7 @@ function PlayerDetail() {
 }, [puppyid]); // Fetch player whenever puppyid changes. Get player uses a puppy id to get info tied to that ID. 
 const handlePlayerDelete = () => {
     console.log(handlePlayerDelete);
-    useEffect (() => {
+    useEffect (() => { 
         deletePlayer(puppyid).then((playerData) => {
             setPlayer(playerData);
     }).catch((error) => {
@@ -32,7 +33,7 @@ const handlePlayerDelete = () => {
 };
 const handleSubmit = (event) => //{
   console.log(handleSubmit);
-  useEffect (() => {
+  useEffect (() => { 
       addPlayer(puppyid).then((playerData) => {
           setPlayer(playerData);
   }).catch((error) => {

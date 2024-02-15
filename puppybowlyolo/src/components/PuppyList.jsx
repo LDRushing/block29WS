@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { getPlayers, getPlayer, deletePlayer, createPlayer } from '../api.js';
 import PlayerDetail from './PlayerDetail.jsx' 
-import Player from './Player.jsx'
+import PlayerInfo from './PlayerInfo.jsx'
 import { Link } from 'react-router-dom';
 
 function PuppyList() {
