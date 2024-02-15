@@ -15,7 +15,6 @@ function PlayerDetail() {
 });
 }, [puppyid]); // Fetch player whenever puppyid changes. Get player uses a puppy id to get info tied to that ID. 
 const handlePlayerDelete = () => {
-    let {puppyid} = useParams();
     console.log(handlePlayerDelete);
     useEffect (() => {
         deletePlayer(puppyid).then((playerData) => {
@@ -23,7 +22,7 @@ const handlePlayerDelete = () => {
     }).catch((error) => {
         console.error("Error deleting player:", error)
     });
-    } [puppy.id]);
+    } [puppyid]);
   //  handlePlayerDelete(puppyid).then((playerData) => {
    //     onDelete(puppyid); // Notify parent component of deletion
    //     history.push("/"); // Redirect to home page after deletion
@@ -32,7 +31,6 @@ const handlePlayerDelete = () => {
    // });
 };
 const handleSubmit = (event) => //{
-  let {puppyid} = useParams();
   console.log(handleSubmit);
   useEffect (() => {
       addPlayer(puppyid).then((playerData) => {
