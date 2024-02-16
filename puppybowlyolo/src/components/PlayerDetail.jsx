@@ -3,6 +3,7 @@ import { deletePlayer, getPlayer, createPlayer } from "../api.js";
 import { Routes, Route, useParams, Link } from "react-router-dom";
 import PlayerInfo from "./PlayerInfo.jsx";
 import PuppyList from "./PuppyList.jsx";
+
 //Props are how we pass data from one component to another.
 
 export default function PlayerDetail() {
