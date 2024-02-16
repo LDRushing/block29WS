@@ -5,8 +5,9 @@ import PlayerInfo from './PlayerInfo.jsx'
 import { Link } from 'react-router-dom';
 
 function PuppyList() {
-  const [player, setPlayer] = useState(0);
-  const [filter, setFilter] = useState(0);
+  const [player, setPlayer] = useState({});
+  const [filter, setFilter] = useState('');
+  console.log(filter);
   const [players, setPlayers] = useState([]); //I can always map over an empty array. Null won't work.
   useEffect(() => { //Wrap APIs in useEffect when we call it. 
   
@@ -61,7 +62,7 @@ function handleFilter(evt) {
       <input type="status" name="status" />
       <button type="submit">Add Player</button>
     </form>
-    <input type="text" name="filter" value="filter" onChange={handleFilter} />
+    <input type="text" name="filter" value={filter} onChange={handleFilter} />
     <table>
       <thead> 
         <tr>
@@ -71,7 +72,7 @@ function handleFilter(evt) {
         </tr>
       </thead>
       <tbody>
-        {players.map((puppy) => (
+        {players.filter(puppy => puppy.name.match(filter)).map((puppy) => ( //map will affect anything in the array. Puppy => puppy means "I want to keep all the puppies."
         <tr key={puppy.id}>
           <td>{puppy.name}</td>
           <td>{puppy.breed}</td>

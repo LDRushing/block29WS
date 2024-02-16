@@ -49,13 +49,7 @@ export default function PlayerDetail() {
   };
 
   const handleFilter = () => {
-    filterPlayer(puppyid)
-    .then((playerData) => {
-      setPlayer(playerData);
-    })
-    .catch((error) => {
-      console.error("Error finding player:", error);
-    });
+   
 };
 
 
