@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-export default function Player({ Player, onClick }){
+export default function Player({ player, onClick }){
     return (
 <tr key={player.id}>
 <td>{player.name}</td>
