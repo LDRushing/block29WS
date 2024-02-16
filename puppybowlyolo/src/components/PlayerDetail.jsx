@@ -20,8 +20,6 @@ export default function PlayerDetail() {
   }, [puppyid]); // Fetch player whenever puppyid changes. Get player uses a puppy id to get info tied to that ID.
 
   const handlePlayerDelete = () => {
-    console.log(handlePlayerDelete);
-
     deletePlayer(puppyid)
       .then((playerData) => {
         setPlayer(playerData);
@@ -44,10 +42,22 @@ export default function PlayerDetail() {
           setPlayer(playerData);
         })
         .catch((error) => {
-          console.error("Error submitting player:", error);
+          console.error("Error adding player:", error);
         });
-    }, [puppy.id]);
+    }, [puppyid]);
   };
+
+  const handleFilter = () => {
+    filterPlayer(puppyid)
+    .then((playerData) => {
+      setPlayer(playerData);
+    })
+    .catch((error) => {
+      console.error("Error finding player:", error);
+    });
+};
+
+
   return (
     <div className="details">
       {player ? (

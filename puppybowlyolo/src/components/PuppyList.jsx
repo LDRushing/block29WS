@@ -56,7 +56,7 @@ function handleSubmit(evt) {
   });
 }
 function handleFilter(evt) {
- // {players.filter((player) => player.name.toLowerCase().include(filter.toLowerCase()))
+ //{players.filter((player) => player.name.toLowerCase().include(filter.toLowerCase()))
   setFilter(evt.target.value); 
 }
   return (
