@@ -21,16 +21,15 @@ export default function PlayerDetail() {
 
   const handlePlayerDelete = () => {
     console.log(handlePlayerDelete);
-    useEffect(() => {
-      deletePlayer(puppyid)
-        .then((playerData) => {
-          setPlayer(playerData);
-        })
-        .catch((error) => {
-          console.error("Error deleting player:", error);
-        });
-    }, [puppyid]);
-  };
+
+    deletePlayer(puppyid)
+      .then((playerData) => {
+        setPlayer(playerData);
+      })
+      .catch((error) => {
+        console.error("Error deleting player:", error);
+      });
+  }; //All hooks have to be used at the top of the file.
   // //  handlePlayerDelete(puppyid).then((playerData) => {
   //  //     onDelete(puppyid); // Notify parent component of deletion
   //  //     history.push("/"); // Redirect to home page after deletion

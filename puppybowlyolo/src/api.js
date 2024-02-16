@@ -34,12 +34,12 @@ try {
      }
     }
     export async function deletePlayer(playerId){
+      console.log(playerId);
       try {
        const response = await fetch (`${API_URL}/players/${playerId}`, {
        method: "DELETE",
       });
-       const result = await response.json();
-       return result.data.players;
+       await response.json();
       } catch (error){
          console.error(error);
       }

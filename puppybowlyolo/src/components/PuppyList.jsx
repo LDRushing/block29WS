@@ -88,7 +88,7 @@ function handleFilter(evt) {
           <td>{puppy.breed}</td>
           <td>{puppy.status}</td>
           <td>
-  <button onClick={() => handlePlayerDelete(player.id)}>Delete Player</button>
+  <button onClick={() => handlePlayerDelete(puppy.id)}>Delete Player</button>
   <Link to={`/${puppy.id}`}>View Player</Link>
         </td>
         </tr>
