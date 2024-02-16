@@ -9,12 +9,7 @@ function PuppyList() {
   const [filter, setFilter] = useState(0);
   const [players, setPlayers] = useState([]); //I can always map over an empty array. Null won't work.
   useEffect(() => { //Wrap APIs in useEffect when we call it. 
-    async function puppy() {
-      const newPlayer = await createPlayer({
-        name: 'Rufus',
-        breed: 'Irish setter'
-      });
-    }
+  
     //fetch().then(response => response.json()).then (result => {
     //  console.log(result);
     //})
@@ -27,12 +22,6 @@ function PuppyList() {
   }
 , []); //We want our useEffect to end here. 
 
-  const fakePuppies = [{
-    id: 1,
-    name: "Fuzzy",
-    breed: "Mastiff",
-    status: "Field",
-}]; //Box brackets are arrays and curly braces are objects.
   function handlePlayerClick(playerId) {
 //getPlayer(playerid).then(setPlayer);
   console.log(playerId);
@@ -47,7 +36,7 @@ function handlePlayerDelete(playerId) {
 }
 function handleSubmit(evt) {
   evt.preventDefault();
-  const formData = new formData(evt.target);
+  const formData = new FormData(evt.target);
   const newPlayer = Object.fromEntries(formData.entries());
   createPlayer(newPlayer).then(() => {
     getPlayers().then((players) => {
@@ -65,11 +54,11 @@ function handleFilter(evt) {
     <PlayerDetail player={player} />
     <form onSubmit={handleSubmit}>
       <label htmlFor="name">Name:</label>
-      <input type="text" id="name"/>
+      <input type="text" name="name"/>
       <label htmlFor="breed">Breed:</label>
-      <input type="text" id="breed" />
+      <input type="text" name="breed" />
       <label htmlFor="status">Status:</label>
-      <input type="status" id="status" />
+      <input type="status" name="status" />
       <button type="submit">Add Player</button>
     </form>
     <input type="text" name="filter" value="filter" onChange={handleFilter} />

@@ -36,15 +36,16 @@ export default function PlayerDetail() {
   //  // });
   //  // };
   const handleSubmit = (event) => {
-    useEffect(() => {
       addPlayer(puppyid)
+        .then(() => {
+          getPlayers(); //when I create a player, the list of players must be updated. 
+        })
         .then((playerData) => {
-          setPlayer(playerData);
+          setPlayers(playerData); // Update player state with fetched player data
         })
         .catch((error) => {
           console.error("Error adding player:", error);
         });
-    }, [puppyid]);
   };
 
   const handleFilter = () => {
