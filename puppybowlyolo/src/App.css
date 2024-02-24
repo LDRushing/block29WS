@@ -1,8 +1,7 @@
 body {
-  background-color: rgb(126, 163, 195);
+  background-color: rgb(114, 44, 126);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: grid;
-  margin-right: ;
 }
 #root {
   max-width: 1280px;

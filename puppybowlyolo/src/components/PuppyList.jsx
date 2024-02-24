@@ -82,11 +82,11 @@ function handleFilter(evt) {
   <Link to={`/${puppy.id}`}>View Player</Link>
         </td>
         </tr>
-        ))};
+        ))}
     </tbody>
     </table>
     <dialog open>{player.name}</dialog>
     </div>
   );
 }
-export default PuppyList;
+export default PuppyList
