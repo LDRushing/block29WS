@@ -3,6 +3,7 @@ import PuppyList from "./components/PuppyList";
 import { Routes, Route, Link } from "react-router-dom";
 import PlayerDetail from "./components/PlayerDetail";
 import PlayerInfo from "./components/PlayerInfo";
+import './App.css'
 function App() {
   return (
       <div id="container">
